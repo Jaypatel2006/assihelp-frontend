@@ -8,6 +8,7 @@ const StylishForm = (props) => {
   
 
   const [file, setFile] = useState(null);
+  const [loading, setLoading] = useState(false);
 
 const handleFileChange = (e) => {
   console.log(e.target.files)
@@ -20,7 +21,7 @@ const handleFileChange = (e) => {
     const formData = new FormData();
     formData.append("subject", props.name);
     formData.append("contribute", file);
-
+    setLoading(true)
     try {
         const response = await fetch(url+'/user/upload', {
             method: 'POST',
@@ -41,6 +42,7 @@ const handleFileChange = (e) => {
           theme: "dark",
        
           });
+          setLoading(false);
         
     } catch (error) {
         console.error("Error:", error);
@@ -84,7 +86,7 @@ const handleFileChange = (e) => {
           className="w-full py-2 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 hover:cursor-pointer"
 
         >
-          Submit
+          {loading ? 'Submitting...' : 'Submit'}
         </button>
         <ToastContainer
 position="top-right"
