@@ -11,7 +11,7 @@ function App() {
   useEffect(()=>{
     
       async function fetchdata(sub, setState) {
-        const response = await fetch(url + `/user/` + sub);
+        const response = await fetch(url + `user/` + sub);
         const data = await response.json();
         console.log(data);
         setState(data);
