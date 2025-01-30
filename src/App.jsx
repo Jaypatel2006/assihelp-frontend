@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import StylishForm from './components/stylishform'
-const url = `http://localhost:3000`;
+const url = `https://assihelp-backend.vercel.app/`;
 
 function App() {
   const [dsa,setdsa] = useState(null);
