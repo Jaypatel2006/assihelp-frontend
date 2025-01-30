@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from "react";
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
-
+const url = `https://assihelp-backend.vercel.app/`;
 
 const StylishForm = (props) => {
 
@@ -22,7 +22,7 @@ const handleFileChange = (e) => {
     formData.append("contribute", file);
 
     try {
-        const response = await fetch('http://localhost:3000/user/upload', {
+        const response = await fetch(url+'/user/upload', {
             method: 'POST',
             body: formData,
         });
@@ -51,7 +51,7 @@ const handleFileChange = (e) => {
     
       <form
         method='post'
-        action='http://localhost:3000/user/upload'
+        action={url+`/user/upload`}
         encType='multipart/form-data'
         onSubmit={(e)=>{
           handleSubmit(e)
