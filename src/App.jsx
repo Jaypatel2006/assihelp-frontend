@@ -42,7 +42,7 @@ function App() {
               
                 <ul className='h-32 overflow-y-scroll'>
                 {dsa && dsa.map((val, idx) => (
-                    <li key={idx} className='text-blue-700 m-2 overflow-hidden p-2 text-center rounded-xl bg-slate-200 hover:bg-slate-300 font-medium underline'><a href={val.file} className='p-3' target="_blank" rel="noopener noreferrer">{val.file}</a></li>
+                    <li key={idx} className='text-blue-700 m-2 overflow-hidden p-2 text-center rounded-xl bg-slate-200 hover:bg-slate-300 font-medium underline'><a href={val.file} className='p-3' target="_blank" rel="noopener noreferrer">Assignment By - {val.name}</a></li>
                   ))}
                 </ul>
                 
@@ -59,7 +59,7 @@ function App() {
               
                 <ul className='h-32 overflow-y-scroll'>
                 {math && math.map((val, idx) => (
-                    <li key={idx} className='text-blue-700 m-2 overflow-hidden p-2 text-center rounded-xl bg-slate-200 hover:bg-slate-300 font-medium underline'><a href={val.file} className='p-3'>{val.file}</a></li>
+                    <li key={idx} className='text-blue-700 m-2 overflow-hidden p-2 text-center rounded-xl bg-slate-200 hover:bg-slate-300 font-medium underline'><a href={val.file} className='p-3'>{val.name}</a></li>
                   ))}
                 </ul>
                 
@@ -114,7 +114,6 @@ function App() {
                   ))}
                 </ul>
                 
-              
             </div>
           </div>
         </div>

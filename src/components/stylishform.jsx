@@ -6,11 +6,16 @@ const url = `https://assihelp-backend.onrender.com`;
 const StylishForm = (props) => {
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [name,setname] = useState('');
 
   const handleFileChange = (e) => {
     console.log(e.target.files);
     setFile(e.target.files[0]);
   };
+
+  const namehandler = (e)=>{
+    setname(e.target.value);
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,6 +25,8 @@ const StylishForm = (props) => {
     const formData = new FormData();
     formData.append("subject", props.name);
     formData.append("contribute", file);
+    formData.append("name",name);
+    console.log(Object.fromEntries(formData.entries()))
     setLoading(true);
     try {
       const response = await fetch(url + "/user/upload", {
@@ -41,6 +48,7 @@ const StylishForm = (props) => {
         theme: "dark",
       });
       setLoading(false);
+      setname('');
     } catch (error) {
       console.error("Error:", error);
     }
@@ -60,12 +68,16 @@ const StylishForm = (props) => {
         Contribute Your Assignment
       </h2>
 
+      <input type="text" name="name" placeholder="Enter Your Name" className="border-2 border-slate-400 p-1 w-[100%] rounded-md mb-2" onChange={(e)=>{
+        namehandler(e);
+      }}/>
+
       <div className="mb-4">
         <label
           htmlFor={`${props.name}`}
           className="block text-sm font-medium text-gray-600 mb-2 hover:cursor-pointer"
         >
-          Note - * Please choose pdf file only
+          Note - * Please Submit pdf file only
         </label>
         <input
           type="text"
